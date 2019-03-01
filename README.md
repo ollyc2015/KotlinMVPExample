@@ -7,4 +7,12 @@ To help others, I thought I would take one of my small Java projects that I made
 
 Feel free to fork both this project and `ModelViewPresenter_ListView` (Java version) and look at the code to see the key differences. 
 
-This is not meant to be perfect code, more of a learning aid to get familiar with the syntax.
+This is not meant to be perfect code, more of a learning aid to get familiar with the syntax. Butterknife has been removed from this project as view injection is handled as standard within the Kotlin programming language!
+
+# Design
+* MVP.
+* Dagger2.
+* ListView.
+* Activity.
+* Retrofit2.
+* Picasso
