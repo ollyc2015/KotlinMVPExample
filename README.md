@@ -1,9 +1,8 @@
 # KotlinMVPExample
-This is the same project as `ModelViewPresenter_ListView` found in my repo here:  https://github.com/ollyc2015/ModelViewPresenter_ListView/blob/master/README.md.
-
-As Java is a language I am more familiar with, I have found it useful to look at small Kotlin projects to get used to the syntax. 
-
 To help others, I thought I would take one of my small Java projects that I made to understand MVP and dependency injection and make a Kotlin equivalent.
+
+This is the same project as `ModelViewPresenter_ListView` found in my repo here: https://github.com/ollyc2015/ModelViewPresenter_ListView/
+which is the Java equivalent.
 
 Feel free to fork both this project and `ModelViewPresenter_ListView` (Java version) and look at the code to see the key differences. 
 
