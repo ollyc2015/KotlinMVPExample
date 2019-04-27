@@ -1,5 +1,5 @@
 # KotlinMVPExample
-This is the same project as `ModelViewPresenter_ListView` found in my repo.
+This is the same project as `ModelViewPresenter_ListView` found in my repo here:  https://github.com/ollyc2015/ModelViewPresenter_ListView/blob/master/README.md.
 
 As Java is a language I am more familiar with, I have found it useful to look at small Kotlin projects to get used to the syntax. 
 
