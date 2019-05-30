@@ -1,5 +1,9 @@
 package uk.co.oliverbcurtis.kotlinmvpexample.ui.listview
 
+import android.annotation.SuppressLint
+import android.view.View
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -11,39 +15,13 @@ import uk.co.oliverbcurtis.kotlinmvpexample.ui.BaseActivity
 /*
 The presenter class holds all of the business logic and acts as a mediator between the view and model
 */
-class ListViewPresenter : BaseActivity(), ListViewContract.Presenter {
+class ListViewPresenter(manager: ListViewManager) : BaseActivity(), ListViewContract.Presenter {
 
     //Gets the view of the class that ListViewContract.View is being implemented by
-    private lateinit var view:ListViewContract.View
-    private val apiService = ApiUtils.apiService
-    private var returned_meals: MealResponse? = null
-    lateinit var mealResponse: List<Meal>
+    private var view: ListViewContract.View? = null
 
-
-    override fun getMeal() {
-
-        //Call the external DB to load all the latest returned_meals
-        apiService.mealList
-
-        // Retrofit call to API, returns list of returned_meals
-        apiService.mealList.enqueue(object : Callback<MealResponse> {
-            override fun onResponse(call: Call<MealResponse>, response: Response<MealResponse>) {
-                if (response.isSuccessful) {
-
-                    returned_meals = response.body()!!
-
-                    mealResponse = returned_meals!!.meals
-
-                    view.populateListView(mealResponse)
-
-                }
-            }
-
-            override fun onFailure(call: Call<MealResponse>, t: Throwable) {
-                view!!.showToast(t.toString())
-            }
-        })
-
+    init {
+        this.manager = manager
     }
 
     //Below deals with assigning the pointer view to the view
@@ -51,28 +29,21 @@ class ListViewPresenter : BaseActivity(), ListViewContract.Presenter {
         this.view = view
     }
 
+    @SuppressLint("CheckResult")
+    override fun requestAllMeals() {
+        manager!!.getMeals()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response -> view!!.populateListView(response) }, { t -> view!!.showToast(t.localizedMessage) })
+    }
 
+
+    @SuppressLint("CheckResult")
     override fun onClick(position: Meal) {
-
-        val mealID = position.idMeal!!.toString()
-
-        // Retrofit call to API, returns the meal details of the selected meal - DB queries meal ID
-        apiService.getMeal(mealID).enqueue(object : Callback<MealResponse> {
-            override fun onResponse(call: Call<MealResponse>, response: Response<MealResponse>) {
-                if (response.isSuccessful) {
-
-                    returned_meals = response.body()!!
-
-                    mealResponse = returned_meals!!.meals
-
-                     view.selectedMeal(mealResponse)
-                }
-            }
-
-            override fun onFailure(call: Call<MealResponse>, t: Throwable) {
-                view.showToast(t.toString())
-            }
-        })
+        manager!!.getMeals(position.idMeal.toString())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ response -> view!!.selectedMeal(response) }, { t -> view!!.showToast(t.localizedMessage) })
     }
 }
 

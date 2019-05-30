@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import uk.co.oliverbcurtis.kotlinmvpexample.dagger.DaggerApplication
+import uk.co.oliverbcurtis.kotlinmvpexample.ui.listview.ListViewManager
 import uk.co.oliverbcurtis.kotlinmvpexample.ui.listview.ListViewPresenter
 import uk.co.oliverbcurtis.kotlinmvpexample.ui.listview.MealListAdapter
 import uk.co.oliverbcurtis.kotlinmvpexample.ui.selectedMeal.SelectedMealAdapter
@@ -22,6 +23,9 @@ open class BaseActivity : AppCompatActivity() {
         @Inject set
 
     var selectedMealAdapter: SelectedMealAdapter? = null
+        @Inject set
+
+    var manager: ListViewManager? = null
         @Inject set
 
 

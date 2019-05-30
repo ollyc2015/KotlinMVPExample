@@ -18,7 +18,7 @@ import java.util.ArrayList
 
 
 //This class relates to all the views/fragments etc used
-class ListView_View : BaseActivity(), ListViewContract.View {
+class ListViewActivity : BaseActivity(), ListViewContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,7 @@ class ListView_View : BaseActivity(), ListViewContract.View {
 
     override fun initView() {
 
-        presenter!!.getMeal()
+        presenter!!.requestAllMeals()
     }
 
 

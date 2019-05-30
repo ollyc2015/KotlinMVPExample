@@ -1,9 +1,6 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -22,6 +19,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 
@@ -36,10 +37,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     //Retrofit
-    implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
@@ -52,4 +53,19 @@ dependencies {
     //Butter Knife
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    //Unit testing
+    testImplementation 'org.mockito:mockito-core:2.23.0';
+    testImplementation 'org.mockito:mockito-inline:2.13.0'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:3.2.0'
+
+
+    // RxJava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    // RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    //you need this to use RxAndroid with retrofit.
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 }

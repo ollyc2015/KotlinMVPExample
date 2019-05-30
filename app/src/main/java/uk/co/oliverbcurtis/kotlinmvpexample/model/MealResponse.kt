@@ -8,5 +8,5 @@ class MealResponse : Serializable {
 
     @SerializedName("meals")
     @Expose
-    lateinit var meals: List<Meal>
+    var meals: List<Meal>? = null
 }

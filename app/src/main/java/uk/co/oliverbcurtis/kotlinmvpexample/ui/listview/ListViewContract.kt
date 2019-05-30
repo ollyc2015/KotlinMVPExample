@@ -6,7 +6,7 @@ import uk.co.oliverbcurtis.kotlinmvpexample.model.Meal
 //Contract holds the well defined methods for all of the 3 classes
 interface ListViewContract {
 
-    //View defines the rules for the ListView_View Class - the below methods will need to be implemented in ListView_View
+    //View defines the rules for the ListViewActivity Class - the below methods will need to be implemented in ListViewActivity
     interface View {
         //Method used to set some data
 
@@ -20,9 +20,9 @@ interface ListViewContract {
     //The below methods will be defined in the ListViewPresenter class
     interface Presenter {
 
-        fun getMeal()
-        fun attachView(view: ListViewContract.View)
-        fun onClick(position: Meal)
+         fun requestAllMeals()
+         fun attachView(view: ListViewContract.View)
+         fun onClick(position: Meal)
 
     }
 }
