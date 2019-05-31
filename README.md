@@ -9,6 +9,8 @@ Feel free to fork both this project and `ModelViewPresenter_ListView` (Java vers
 This is not meant to be perfect code, more of a learning aid to get familiar with the syntax. Butterknife has been removed from this project as view injection is handled as standard within the Kotlin programming language!
 
 # Design
+* Unit Testing
+* RX Java
 * MVP.
 * Dagger2.
 * ListView.
