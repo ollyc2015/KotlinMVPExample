@@ -59,6 +59,8 @@ dependencies {
     testImplementation 'org.mockito:mockito-inline:2.13.0'
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.squareup.okhttp3:mockwebserver:3.2.0'
+    //A small library that provides helper functions to work with Mockito in Kotlin.
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
 
 
     // RxJava

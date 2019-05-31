@@ -1,5 +1,6 @@
 package uk.co.oliverbcurtis.kotlinmvpexample.ui
 
+import com.nhaarman.mockitokotlin2.argumentCaptor
 import io.reactivex.Single
 import junit.framework.Assert.assertEquals
 import org.junit.Before
@@ -57,14 +58,14 @@ class ListViewPresenterTest {
         The ArgumentCaptor class allows us to access the arguments of method calls during the verification.
         This allows us to capture these arguments of method calls and to use them for tests.
          */
-        val listCaptor = ArgumentCaptor.forClass(List::class.java)
+        val listCaptor = argumentCaptor<List<Meal>>()
 
         /*
         Mockito keeps track of all the method calls and their parameters to the mock object.
         You can use the verify() method on the mock object to verify that the specified conditions are met.
          */
         verify(view, times(1)).populateListView(listCaptor.capture())
-        val mealList = listCaptor.value
+        val mealList = listCaptor.firstValue
         // The below confirms that expected value is the same as actual value
         assertEquals(mealList, MEALS_THREE)
     }

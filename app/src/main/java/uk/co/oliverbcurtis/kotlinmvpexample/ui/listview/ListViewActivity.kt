@@ -42,10 +42,9 @@ class ListViewActivity : BaseActivity(), ListViewContract.View {
     }
 
 
-    override fun populateListView(meal:List<Meal>) {
+    override fun populateListView(meal: List<Meal>) {
 
-        // Attach the adapter to a ListView
-        list_view!!.setAdapter(mealListAdapter)
+        list_view!!.adapter = mealListAdapter
         mealListAdapter!!.updateList(meal)
 
         //Get string value of selected item
