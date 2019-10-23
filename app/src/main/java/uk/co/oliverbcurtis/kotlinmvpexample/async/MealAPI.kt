@@ -9,7 +9,7 @@ import uk.co.oliverbcurtis.kotlinmvpexample.model.MealResponse
 interface MealAPI {
 
     // Returns list of all the latest meals
-    @GET("latest.php")
+    @GET("search.php?f=c")
     abstract fun getMealList(): Single<MealResponse>
 
     // Returns details of the selected meal by ID
