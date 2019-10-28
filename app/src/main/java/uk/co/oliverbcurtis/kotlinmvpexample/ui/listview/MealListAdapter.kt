@@ -32,12 +32,12 @@ class MealListAdapter(context: Context, mealArrayList: List<Meal>) : ArrayAdapte
             convertView = LayoutInflater.from(context).inflate(R.layout.meal_list_layout, parent, false)
         }
         // Lookup view for data population
-        var iv_cosmetic = convertView!!.findViewById(R.id.iv_meal) as ImageView
-        val tv_cosmetic = convertView.findViewById(R.id.tv_meal) as TextView
+        val ivCosmetic = convertView!!.findViewById(R.id.iv_meal) as ImageView
+        val tvCosmetic = convertView.findViewById(R.id.tv_meal) as TextView
 
         // Populate the data into the template view using the data object
-        Picasso.get().load(meal!!.strMealThumb).into(iv_cosmetic)
-        tv_cosmetic.setText(meal!!.strMeal)
+        Picasso.get().load(meal!!.strMealThumb).into(ivCosmetic)
+        tvCosmetic.text = meal.strMeal
 
         // Return the completed view to render on screen
         return convertView

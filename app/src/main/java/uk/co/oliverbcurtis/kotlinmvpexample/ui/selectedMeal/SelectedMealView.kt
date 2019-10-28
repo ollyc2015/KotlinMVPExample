@@ -1,7 +1,6 @@
 package uk.co.oliverbcurtis.kotlinmvpexample.ui.selectedMeal
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.listview_view.*
 import uk.co.oliverbcurtis.kotlinmvpexample.model.Meal

@@ -3,12 +3,8 @@ package uk.co.oliverbcurtis.kotlinmvpexample.ui.listview
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
-import android.util.Log
 import android.widget.AdapterView
-import android.widget.ListView
 import android.widget.Toast
-import butterknife.BindView
-import butterknife.ButterKnife
 import kotlinx.android.synthetic.main.listview_view.*
 import uk.co.oliverbcurtis.kotlinmvpexample.R
 import uk.co.oliverbcurtis.kotlinmvpexample.model.Meal
@@ -48,7 +44,7 @@ class ListViewActivity : BaseActivity(), ListViewContract.View {
         mealListAdapter!!.updateList(meal)
 
         //Get string value of selected item
-        list_view!!.onItemClickListener = AdapterView.OnItemClickListener { arg0, view, position, arg3 ->
+        list_view!!.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             //first get the position of the item clicked, then collect the ID (in presenter class)
             val meal1 = meal[position]
 

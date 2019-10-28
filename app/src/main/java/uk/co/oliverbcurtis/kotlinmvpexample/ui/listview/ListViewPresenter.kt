@@ -10,6 +10,7 @@ import uk.co.oliverbcurtis.kotlinmvpexample.ui.BaseActivity
 /*
 The presenter class holds all of the business logic and acts as a mediator between the view and model
 */
+@SuppressLint("Registered")
 class ListViewPresenter(manager: ListViewManager) : BaseActivity(), ListViewContract.Presenter {
 
     //Gets the view of the class that ListViewContract.View is being implemented by
@@ -27,7 +28,6 @@ class ListViewPresenter(manager: ListViewManager) : BaseActivity(), ListViewCont
 
     //Disposable: There's no point in listening to a reactive data stream if it's no longer needed.
     //Marking something as disposable makes it easy to remove observers from an observable.
-    @SuppressLint("CheckResult")
     override fun requestAllMeals() {
 
         disposable.add(
@@ -40,8 +40,6 @@ class ListViewPresenter(manager: ListViewManager) : BaseActivity(), ListViewCont
         )
     }
 
-
-    @SuppressLint("CheckResult")
     override fun onClick(position: Meal) {
 
         disposable.add(

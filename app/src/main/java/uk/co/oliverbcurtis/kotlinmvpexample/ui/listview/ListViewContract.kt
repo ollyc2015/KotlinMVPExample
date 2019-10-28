@@ -21,7 +21,7 @@ interface ListViewContract {
     interface Presenter {
 
          fun requestAllMeals()
-         fun attachView(view: ListViewContract.View)
+         fun attachView(view: View)
          fun onClick(position: Meal)
 
     }

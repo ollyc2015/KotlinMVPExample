@@ -16,7 +16,7 @@ import uk.co.oliverbcurtis.kotlinmvpexample.ui.BaseActivity
 
 //Component binds our dependencies
 @Singleton
-@Component(modules = arrayOf(AppModule::class))
+@Component(modules = [AppModule::class])
 interface AppComponent {
 
     fun inject(application: DaggerApplication)

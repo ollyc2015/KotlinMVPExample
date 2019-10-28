@@ -15,9 +15,6 @@ class Meal : JSONArray(), Serializable {
     @SerializedName("strMeal")
     @Expose
     var strMeal: String? = null
-    @SerializedName("strCategory")
-    @Expose
-    var strCategory: String? = null
     @SerializedName("strArea")
     @Expose
     var strArea: String? = null
@@ -27,12 +24,6 @@ class Meal : JSONArray(), Serializable {
     @SerializedName("strMealThumb")
     @Expose
     var strMealThumb: String? = null
-    @SerializedName("strTags")
-    @Expose
-    var strTags: Any? = null
-    @SerializedName("strYoutube")
-    @Expose
-    var strYoutube: String? = null
     @SerializedName("strIngredient1")
     @Expose
     var strIngredient1: String? = null
@@ -153,11 +144,5 @@ class Meal : JSONArray(), Serializable {
     @SerializedName("strMeasure20")
     @Expose
     var strMeasure20: String? = null
-    @SerializedName("strSource")
-    @Expose
-    var strSource: String? = null
-    @SerializedName("dateModified")
-    @Expose
-    var dateModified: Any? = null
 
 }

@@ -103,19 +103,19 @@ class SelectedMealAdapter(context: Context, mealArrayList: List<Meal>) : ArrayAd
 
                     //Log.i("Ingredient: ", mealIngredient.toString());
 
-                    val tv_ingredient = TextView(context)
+                    val tvIngredient = TextView(context)
 
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT,
                         1f
                     )
-                    tv_ingredient.text = value + " (" + mealMeasure[measureCount] + ")"
-                    tv_ingredient.layoutParams = params
-                    tv_ingredient.textSize = 18f
-                    tv_ingredient.setTextColor(Color.parseColor("#000000"))
-                    tv_ingredient.gravity = Gravity.CENTER
-                    dynamicSelectedMealLayout.addView(tv_ingredient)
+                    tvIngredient.text = value + " (" + mealMeasure[measureCount] + ")"
+                    tvIngredient.layoutParams = params
+                    tvIngredient.textSize = 18f
+                    tvIngredient.setTextColor(Color.parseColor("#000000"))
+                    tvIngredient.gravity = Gravity.CENTER
+                    dynamicSelectedMealLayout.addView(tvIngredient)
 
                     measureCount++
                 }
@@ -125,9 +125,9 @@ class SelectedMealAdapter(context: Context, mealArrayList: List<Meal>) : ArrayAd
 
         //Finally, populate the remaining data (like meal image etc) into the template view using the data object
         Picasso.get().load(meal.strMealThumb).into(iv_meal)
-        tv_meal.setText(meal.strMeal)
-        tv_cuisineType.setText(meal.strArea)
-        tv_instructions.setText(meal.strInstructions)
+        tv_meal.text = meal.strMeal
+        tv_cuisineType.text = meal.strArea
+        tv_instructions.text = meal.strInstructions
 
         // Return the completed view to render on screen
         return convertView

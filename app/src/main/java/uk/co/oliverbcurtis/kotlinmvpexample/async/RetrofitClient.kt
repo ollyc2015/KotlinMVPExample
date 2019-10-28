@@ -12,7 +12,7 @@ object RetrofitClient {
     private var retrofit: Retrofit? = null
     fun getClient(baseUrl:String): Retrofit? {
         val logging = HttpLoggingInterceptor()
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+        logging.level = HttpLoggingInterceptor.Level.BODY
         val httpClient = OkHttpClient.Builder()
         httpClient.connectTimeout(100, TimeUnit.SECONDS)
             .readTimeout(100, TimeUnit.SECONDS).build()
