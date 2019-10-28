@@ -39,4 +39,5 @@ open class BaseActivity : AppCompatActivity() {
 
         (application as DaggerApplication).appComponent.inject(this)
     }
+
 }

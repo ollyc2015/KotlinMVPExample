@@ -18,4 +18,6 @@ class ListViewManager(private val apiService: MealAPI) {
         return apiService.getMeal(mealID)
             .map(MealResponse::meals)
     }
+
+
 }

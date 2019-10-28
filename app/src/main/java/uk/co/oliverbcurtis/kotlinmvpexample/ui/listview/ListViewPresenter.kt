@@ -3,6 +3,7 @@ package uk.co.oliverbcurtis.kotlinmvpexample.ui.listview
 import android.annotation.SuppressLint
 import android.view.View
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,6 +20,7 @@ class ListViewPresenter(manager: ListViewManager) : BaseActivity(), ListViewCont
 
     //Gets the view of the class that ListViewContract.View is being implemented by
     private var view: ListViewContract.View? = null
+    private val disposable = CompositeDisposable()
 
     init {
         this.manager = manager
@@ -31,19 +33,35 @@ class ListViewPresenter(manager: ListViewManager) : BaseActivity(), ListViewCont
 
     @SuppressLint("CheckResult")
     override fun requestAllMeals() {
-        manager!!.getMeals()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ response -> view!!.populateListView(response) }, { t -> view!!.showToast(t.localizedMessage) })
+
+        disposable.add(
+            manager!!.getMeals()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    { response -> view!!.populateListView(response) },
+                    { t -> view!!.showToast(t.localizedMessage) })
+        )
     }
 
 
     @SuppressLint("CheckResult")
     override fun onClick(position: Meal) {
-        manager!!.getMeals(position.idMeal.toString())
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ response -> view!!.selectedMeal(response) }, { t -> view!!.showToast(t.localizedMessage) })
+
+        disposable.add(
+            manager!!.getMeals(position.idMeal.toString())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    { response -> view!!.selectedMeal(response) },
+                    { t -> view!!.showToast(t.localizedMessage) })
+        )
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 }
 

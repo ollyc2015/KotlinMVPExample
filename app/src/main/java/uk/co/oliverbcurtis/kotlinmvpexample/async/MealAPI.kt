@@ -10,9 +10,9 @@ interface MealAPI {
 
     // Returns list of all the latest meals
     @GET("search.php?f=c")
-    abstract fun getMealList(): Single<MealResponse>
+    fun getMealList(): Single<MealResponse>
 
     // Returns details of the selected meal by ID
     @GET("lookup.php")
-    abstract fun getMeal(@Query("i") idMeal: String): Single<MealResponse>
+    fun getMeal(@Query("i") idMeal: String): Single<MealResponse>
 }
