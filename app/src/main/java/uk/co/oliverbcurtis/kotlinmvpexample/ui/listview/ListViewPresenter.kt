@@ -1,16 +1,10 @@
 package uk.co.oliverbcurtis.kotlinmvpexample.ui.listview
 
 import android.annotation.SuppressLint
-import android.view.View
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import uk.co.oliverbcurtis.kotlinmvpexample.async.ApiUtils
 import uk.co.oliverbcurtis.kotlinmvpexample.model.Meal
-import uk.co.oliverbcurtis.kotlinmvpexample.model.MealResponse
 import uk.co.oliverbcurtis.kotlinmvpexample.ui.BaseActivity
 
 /*
@@ -31,6 +25,8 @@ class ListViewPresenter(manager: ListViewManager) : BaseActivity(), ListViewCont
         this.view = view
     }
 
+    //Disposable: There's no point in listening to a reactive data stream if it's no longer needed.
+    //Marking something as disposable makes it easy to remove observers from an observable.
     @SuppressLint("CheckResult")
     override fun requestAllMeals() {
 
